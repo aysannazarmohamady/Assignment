@@ -15,3 +15,21 @@ import PyPDF2
 pdf_file = open('sample.pdf', 'rb')
 pdf_reader = PyPDF2.PdfFileReader(pdf_file)
 ```
+**4.Extract text from the PDF:** Iterate through each page of the PDF document and extract the text content using the extractText() method:
+```python
+text_content = ''
+for page_num in range(pdf_reader.numPages):
+    page = pdf_reader.getPage(page_num)
+    text_content += page.extractText()
+```
+**5.Clean the extracted text:** Depending on the specific requirements, I can apply text preprocessing techniques such as tokenization, stop word removal, stemming, or lemmatization to further clean the extracted text data. For example, to remove line breaks and unnecessary whitespaces, I use the following code:
+```python
+text_content = text_content.replace('\n', ' ').replace('\r', ' ').strip()
+```
+**6.Save the extracted text:** Save the extracted and cleaned text data to a file or use it for further processing as needed:
+```python
+with open('extracted_text.txt', 'w') as file:
+    file.write(text_content)
+```
+
+
